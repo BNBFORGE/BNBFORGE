@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080a0e">
+<title>BNB Forge - Your BNB Ecosystem Hub</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(ellipse at top, #332500, #07090d 55%, #030407);
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 30px 24px;
+  overflow: hidden;
+}
+
+header {
+  text-align: center;
+}
+
+.brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin: 10px auto;
+}
+
+.logo {
+  width: 120px;
+  height: 120px;
+  color: #ffd000;
+}
+
+.brand h1 {
+  font-size: clamp(42px, 8vw, 90px);
+  line-height: .95;
+  letter-spacing: -3px;
+  font-weight: 900;
+  text-align: left;
+}
+
+.brand h1 span {
+  display: block;
+  color: #ffd000;
+  margin-top: 8px;
+}
+
+.tagline {
+  font-size: clamp(18px, 3vw, 27px);
+  margin: 15px 0 0;
+}
+
+.navline {
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: bold;
+  margin: 38px 0 18px;
+}
+
+.navline b {
+  color: #ffd000;
+  padding: 0 18px;
+}
+
+.intro {
+  color: #c8d7ed;
+  font-size: clamp(16px, 2.5vw, 24px);
+  margin-bottom: 38px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  min-height: 340px;
+  border: 3px solid #ffd000;
+  border-radius: 28px;
+  padding: 28px 18px 20px;
+  text-align: center;
+  background: linear-gradient(145deg, #28230e, #08090c);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card.swap {
+  border-color: #9747ff;
+  background: linear-gradient(145deg, #32166f, #0c0822);
+}
+
+.card.apps {
+  border-color: #00c7f4;
+  background: linear-gradient(145deg, #063c59, #03101a);
+}
+
+.emoji {
+  height: 108px;
+  display: grid;
+  place-items: center;
+  font-size: 75px;
+}
+
+.card h2 {
+  font-size: clamp(28px, 3.5vw, 42px);
+  margin: 8px 0 12px;
+}
+
+.card p {
+  color: #c8d7ed;
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 22px;
+  max-width: 230px;
+}
+
+.go {
+  margin-top: auto;
+  border-radius: 50%;
+  width: 66px;
+  height: 66px;
+  background: #ffd000;
+  color: #111;
+  font-size: 32px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  transition: transform .2s;
+}
+
+.swap .go {
+  background: #793bff;
+  color: white;
+}
+
+.apps .go {
+  background: #00c7f4;
+  color: #00131a;
+}
+
+.go:hover {
+  transform: translateY(-4px);
+}
+
+.hero {
+  position: relative;
+  min-height: 310px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.orbit {
+  position: absolute;
+  width: 88%;
+  height: 110px;
+  border: 4px solid #ffd000;
+  border-radius: 50%;
+  transform: rotate(-5deg);
+  box-shadow: 0 0 25px #ffcb00;
+  bottom: 35px;
+}
+
+.device {
+  width: min(440px, 65%);
+  padding: 32px 18px;
+  border: 2px solid #555d70;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #252c3e, #06080e);
+  box-shadow: 0 24px 45px #000, 0 0 25px #ffca0040;
+  transform: rotate(-7deg);
+  text-align: center;
+  z-index: 1;
+}
+
+.cube {
+  font-size: 65px;
+  color: #ffd000;
+  text-shadow: 0 0 22px #ffbf00;
+}
+
+.device strong {
+  display: block;
+  color: #ffd000;
+  font-size: 28px;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+.coin {
+  position: absolute;
+  color: #fff0a6;
+  background: linear-gradient(145deg, #fff2a0, #f0ad00, #8b5700);
+  border: 4px double #fff0a0;
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  display: grid;
+  place-items: center;
+  font-size: 42px;
+  box-shadow: 0 0 25px #ffca0080;
+  z-index: 2;
+}
+
+.coin.left {
+  left: 7%;
+  bottom: 70px;
+}
+
+.coin.right {
+  right: 8%;
+  bottom: 55px;
+}
+
+.coin.small {
+  width: 55px;
+  height: 55px;
+  font-size: 25px;
+  left: 22%;
+  top: 15px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #5a4b13;
+  padding: 28px 0 16px;
+  text-align: center;
+}
+
+.feature {
+  padding: 10px;
+  border-right: 1px solid #343434;
+}
+
+.feature:last-child {
+  border: 0;
+}
+
+.ico {
+  font-size: 32px;
+  color: #ffd000;
+}
+
+.feature h3 {
+  margin: 8px 0;
+  font-size: 19px;
+}
+
+.feature p {
+  color: #c8d7ed;
+  font-size: 15px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px 0 5px;
+  font-size: 19px;
+}
+
+footer span {
+  color: #ffd000;
+  font-size: 27px;
+  margin-right: 10px;
+}
+
+.note {
+  color: #9ca8ba;
+  font-size: 12px;
+  text-align: center;
+  margin: 18px auto 0;
+  max-width: 760px;
+  line-height: 1.5;
+}
+
+@media (max-width: 650px) {
+  main {
+    padding: 20px 14px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .logo {
+    width: 75px;
+    height: 75px;
+  }
+
+  .brand h1 {
+    letter-spacing: -1px;
+  }
+
+  .navline b {
+    padding: 0 7px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    min-height: 255px;
+    padding: 20px 16px;
+  }
+
+  .emoji {
+    height: 72px;
+    font-size: 55px;
+  }
+
+  .card h2 {
+    margin-top: 4px;
+  }
+
+  .go {
+    width: 54px;
+    height: 54px;
+  }
+
+  .hero {
+    min-height: 235px;
+  }
+
+  .device {
+    width: 62%;
+    padding: 22px 8px;
+  }
+
+  .cube {
+    font-size: 48px;
+  }
+
+  .device strong {
+    font-size: 18px;
+  }
+
+  .coin {
+    width: 65px;
+    height: 65px;
+    font-size: 30px;
+  }
+
+  .coin.left {
+    left: 1%;
+    bottom: 58px;
+  }
+
+  .coin.right {
+    right: 1%;
+    bottom: 43px;
+  }
+
+  .coin.small {
+    left: 12%;
+    top: 12px;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .feature {
+    border-right: 0;
+    border-bottom: 1px solid #303030;
+    padding: 15px;
+  }
+
+  .feature:last-child {
+    border: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+<main>
+
+<header>
+  <div class="brand">
+    <svg class="logo" viewBox="0 0 120 120"
+         role="img" aria-label="BNB Forge logo">
+      <path fill="#ffd000"
+        d="M60 3 104 28 104 61 89 70 89 39 60 22 31 39 31 69 16 60 16 28Z"/>
+      <path fill="#ffd000"
+        d="m60 35 21 12-9 6-12-7-12 7-9-6Zm0 17 10 6-10 6-10-6Zm-21 4 9 6v13l12 7 12-7V62l9-6v25L60 94 39 81Z"/>
+      <path fill="#ffd000"
+        d="M9 83h102l-8 12H17zM40 95h40l-5 10H45zM35 106h50v7H35z"/>
+      <path fill="#ffd000" d="m76 28 8-6 19 27-8 6z"/>
+    </svg>
+
+    <div class="brand-text">
+      <h1>BNB<span>FORGE</span></h1>
+    </div>
+  </div>
+
+  <p class="tagline">Your BNB Ecosystem Hub</p>
+
+  <div class="navline">
+    Wallet <b>•</b> Swap <b>•</b> Apps
+  </div>
+
+  <p class="intro">
+    Experience the power of BNB Chain, all in one place.
+  </p>
+</header>
+
+<section class="cards">
+
+  <article class="card">
+    <div class="emoji">👛</div>
+    <h2>Wallet</h2>
+    <p>Manage your assets securely</p>
+    <a class="go"
+       href="https://web3.binance.com/en"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Open Binance Wallet">➜</a>
+  </article>
+
+  <article class="card swap">
+    <div class="emoji">🪙</div>
+    <h2>Swap</h2>
+    <p>Trade and convert your assets</p>
+    <a class="go"
+       href="https://pancakeswap.finance/swap"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Open PancakeSwap">➜</a>
+  </article>
+
+  <article class="card apps">
+    <div class="emoji">▦</div>
+    <h2>Apps</h2>
+    <p>Explore dApps and more</p>
+    <a class="go"
+       href="https://www.bnbchain.org/en/dapps"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Explore BNB Chain apps">➜</a>
+  </article>
+
+</section>
+
+<section class="hero" aria-label="BNB Forge illustration">
+  <div class="orbit"></div>
+  <div class="coin left">⬡</div>
+  <div class="coin small">⬡</div>
+
+  <div class="device">
+    <div class="cube">⬡</div>
+    <strong>BNB FORGE</strong>
+  </div>
+
+  <div class="coin right">⬡</div>
+</section>
+
+<section class="features">
+  <div class="feature">
+    <div class="ico">⬟</div>
+    <h3>Security first</h3>
+    <p>Your assets, your control</p>
+  </div>
+
+  <div class="feature">
+    <div class="ico">ϟ</div>
+    <h3>Fast</h3>
+    <p>Built on BNB Chain</p>
+  </div>
+
+  <div class="feature">
+    <div class="ico">◎</div>
+    <h3>Decentralized</h3>
+    <p>More freedom, more possibilities</p>
+  </div>
+</section>
+
+<footer>
+  <span>⬡</span>
+  Powered by <strong>BNB Chain</strong>
+</footer>
+
+<p class="note">
+  BNB Forge is an independent landing page concept and is not an
+  official Binance or BNB Chain wallet. Wallet and swap buttons open
+  third-party websites. Always verify URLs and never share your
+  recovery phrase or private key.
+</p>
+
+</main>
+</body>
+  </html>
